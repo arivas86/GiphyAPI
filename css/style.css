@@ -1,0 +1,34 @@
+.img-fluid {
+    border: 2px solid blue;
+    margin: 10px;
+    max-width: 300px;
+    height: auto;
+
+}
+
+body {
+    background-color: black;
+}
+
+h1 {
+    color: whitesmoke;
+    margin: 10px;
+}
+
+.btn {
+    margin: 10px;
+}
+
+.still-giph {
+    float: left;
+    color: whitesmoke;
+}
+
+.form-group{
+    color: whitesmoke;
+    margin: 10px;
+}
+
+.rating{
+    margin-left: 10px;
+}
