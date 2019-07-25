@@ -22,19 +22,28 @@ $( document ).ready(function() {
     };
     
     addTopicButton();
+
+    $("#add-topic").on("click", function(event) {
+        event.preventDefault();
+  
+        var newTopic = $("#topic-input").val().trim();
+        topics.push(newTopic);
+        $("#topic-input").val("");
+        addTopicButton();
+    });
     
     $("#topicBtn").on("click", ".gifBtn", function() {
 
         var myTopic = $(this).attr("data-topic");
         console.log(myTopic);
-        $("#gif-area").empty();
+        $("#render-gif").empty();
 
         var gif = $.get("http://api.giphy.com/v1/gifs/search?q="+myTopic+"&api_key=Q161ghCBqKJHbruJ3Q1Fw5KwccIY1VaJ&limit=10");
         gif.done(function(res) { 
             console.log(res); 
             for (var x=0; x<res.data.length;x++) {
                 var newGiph = $("<div>");
-                newGiph.addClass("still-giph");
+                newGiph.addClass("newGif");
                
                 newGiph.html("<img src="+res.data[x].images.fixed_height_still.url+" class='img-fluid img-thumbnail'>");
                 newGiph.attr("data-topic", myTopic);
@@ -43,14 +52,14 @@ $( document ).ready(function() {
                 myRating.addClass("rating");
                 myRating.text("Rating: "+res.data[x].rating.toUpperCase());
                 newGiph.append(myRating);
-                $("#gif-area").append(newGiph);
+                $("#render-gif").append(newGiph);
                 
             };
             
         });
     });
 
-    $('#gif-area').on('click', '.still-giph', function() {
+    $('#render-gif').on('click', '.newGif', function() {
         var myTopic = $(this).attr("data-topic");
         var myID = $(this).attr("id");
         
@@ -74,14 +83,7 @@ $( document ).ready(function() {
         
     });
 
-    $("#add-topic").on("click", function(event) {
-        event.preventDefault();
-  
-        var newTopic = $("#topic-input").val().trim();
-        topics.push(newTopic);
-        $("#topic-input").val("");
-        addTopicButton();
-    });
+
 
     
 });

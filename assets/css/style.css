@@ -16,17 +16,16 @@ body {
 h1 {
     color: whitesmoke;
     margin: 10px;
+    font-size: 300%;
 }
 
 .btn {
     margin: 10px;
 }
 
-.still-giph {
+.newGif {
     float: left;
-    color: whitesmoke;
-    height: 200px;
-    margin-bottom: 50px;
+
 }
 
 .rating{
