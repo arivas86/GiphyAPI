@@ -2,41 +2,41 @@ var topics = [
     "Music Festivals", "Tomorrowland", "EDC", "DJ", "EDM",
     "Light Show", "Electronic Music Concert","Trippy", "DJ Booth",
     "Kandi","PLUR", "Totem", "Rave Girls",
-    "Rave Squad", "Trance", "Dubstep"
+    "Rave Squad", "Trance", "Dubstep", "Bass"
 ];
 
 
 
 $( document ).ready(function() {
     
-    function addButtons(){
-        $("#buttons").empty();
+    function addTopicButton(){
+        $("#topicBtn").empty();
         for (var x=0; x<topics.length; x++) {
         
             var newButton = $("<button>");
-            newButton.addClass("giphy-button btn btn-primary");
+            newButton.addClass("gifBtn btn btn-primary");
             newButton.attr("data-topic", topics[x]);
             newButton.text(topics[x]);
-            $("#buttons").append(newButton);
+            $("#topicBtn").append(newButton);
         };
     };
     
-    addButtons();
+    addTopicButton();
     
-    $("#buttons").on("click", ".giphy-button", function() {
+    $("#topicBtn").on("click", ".gifBtn", function() {
 
         var myTopic = $(this).attr("data-topic");
         console.log(myTopic);
         $("#gif-area").empty();
 
-        var xhr = $.get("http://api.giphy.com/v1/gifs/search?q="+myTopic+"&api_key=Q161ghCBqKJHbruJ3Q1Fw5KwccIY1VaJ&limit=10");
-        xhr.done(function(res) { 
+        var gif = $.get("http://api.giphy.com/v1/gifs/search?q="+myTopic+"&api_key=Q161ghCBqKJHbruJ3Q1Fw5KwccIY1VaJ&limit=10");
+        gif.done(function(res) { 
             console.log(res); 
             for (var x=0; x<res.data.length;x++) {
                 var newGiph = $("<div>");
                 newGiph.addClass("still-giph");
-                
-                newGiph.html("<img src="+res.data[x].images.fixed_height_still.url+" class='img-fluid rounded'>");
+               
+                newGiph.html("<img src="+res.data[x].images.fixed_height_still.url+" class='img-fluid img-thumbnail'>");
                 newGiph.attr("data-topic", myTopic);
                 newGiph.attr("id", "giph-"+x);
                 var myRating = $("<div>");
@@ -54,8 +54,8 @@ $( document ).ready(function() {
         var myTopic = $(this).attr("data-topic");
         var myID = $(this).attr("id");
         
-        var xhr = $.get("http://api.giphy.com/v1/gifs/search?q="+myTopic+"&api_key=Q161ghCBqKJHbruJ3Q1Fw5KwccIY1VaJ&limit=10");
-        xhr.done(function(res) { 
+        var gif = $.get("http://api.giphy.com/v1/gifs/search?q="+myTopic+"&api_key=Q161ghCBqKJHbruJ3Q1Fw5KwccIY1VaJ&limit=10");
+        gif.done(function(res) { 
             var myIDnum = myID.charAt(5);
             var myRating = $("<div>");
             myRating.addClass("rating");
@@ -63,10 +63,10 @@ $( document ).ready(function() {
             
 
             if ($("#"+myID).html().includes("_s")) {
-                $("#"+myID).html("<img src="+res.data[myIDnum].images.fixed_height.url+" class='img-fluid rounded'>");
+                $("#"+myID).html("<img src="+res.data[myIDnum].images.fixed_height.url+" class='img-fluid img-thumbnail'", "alt='Responsive image'>");
                 $("#"+myID).append(myRating);
             } else {
-                $("#"+myID).html("<img src="+res.data[myIDnum].images.fixed_height_still.url+" class='img-fluid rounded'>");
+                $("#"+myID).html("<img src="+res.data[myIDnum].images.fixed_height_still.url+" class='img-fluid img-thumbnail'" , "alt='Responsive image'>");
                 $("#"+myID).append(myRating);
             }
                         
@@ -80,7 +80,7 @@ $( document ).ready(function() {
         var newTopic = $("#topic-input").val().trim();
         topics.push(newTopic);
         $("#topic-input").val("");
-        addButtons();
+        addTopicButton();
     });
 
     

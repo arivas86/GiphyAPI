@@ -1,13 +1,16 @@
 .img-fluid {
-    border: 2px solid blue;
     margin: 10px;
-    max-width: 300px;
     height: auto;
 
 }
 
+label{
+    color: white;
+    font-size: 150%;
+}
+
 body {
-    background-color: black;
+    background: url("../images/prism.png");
 }
 
 h1 {
@@ -22,9 +25,15 @@ h1 {
 .still-giph {
     float: left;
     color: whitesmoke;
+    height: 200px;
+    margin-bottom: 50px;
 }
 
-.form-group{
+.rating{
+    margin-bottom: 10px;
+}
+
+.form{
     color: whitesmoke;
     margin: 10px;
 }
