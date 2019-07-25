@@ -1,10 +1,8 @@
 var topics = [
-    "Dallas Mavericks", "Dallas Cowboys","Dallas Stars", "Dirk Nowitzki", "Dak Prescott",
-    "Houston Rockets", "Houston Astros",
-    "Texas Rangers", "Rougned Odor",
-    "Kansas City Cheifs",
-    "Los Angeles Lakers", "Los Angeles Rams", "Kobe Bryant",
-    "Milwaukee Bucks", "Milwaukee Brewers", "Giannis Antetokounmpo"
+    "Music Festivals", "Tomorrowland", "EDC", "DJ", "EDM",
+    "Light Show", "Electronic Music Concert","Trippy", "DJ Booth",
+    "Kandi","PLUR", "Totem", "Rave Girls",
+    "Rave Squad", "Trance", "Dubstep"
 ];
 
 
@@ -56,7 +54,7 @@ $( document ).ready(function() {
         var myTopic = $(this).attr("data-topic");
         var myID = $(this).attr("id");
         
-        var xhr = $.get("http://api.giphy.com/v1/gifs/search?q="+myTopic+"&api_key=fFhfIcSoeSiCajP1e9Qk1Ooy6lkEM5CS&limit=10");
+        var xhr = $.get("http://api.giphy.com/v1/gifs/search?q="+myTopic+"&api_key=Q161ghCBqKJHbruJ3Q1Fw5KwccIY1VaJ&limit=10");
         xhr.done(function(res) { 
             var myIDnum = myID.charAt(5);
             var myRating = $("<div>");
