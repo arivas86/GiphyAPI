@@ -38,7 +38,7 @@ $( document ).ready(function() {
         console.log(myTopic);
         $("#render-gif").empty();
 
-        var gif = $.get("http://api.giphy.com/v1/gifs/search?q="+myTopic+"&api_key=Q161ghCBqKJHbruJ3Q1Fw5KwccIY1VaJ&limit=10");
+        var gif = $.get("https://api.giphy.com/v1/gifs/search?q="+myTopic+"&api_key=Q161ghCBqKJHbruJ3Q1Fw5KwccIY1VaJ&limit=10");
         gif.done(function(res) { 
             console.log(res); 
             for (var x=0; x<res.data.length;x++) {
@@ -63,7 +63,7 @@ $( document ).ready(function() {
         var myTopic = $(this).attr("data-topic");
         var myID = $(this).attr("id");
         
-        var gif = $.get("http://api.giphy.com/v1/gifs/search?q="+myTopic+"&api_key=Q161ghCBqKJHbruJ3Q1Fw5KwccIY1VaJ&limit=10");
+        var gif = $.get("https://api.giphy.com/v1/gifs/search?q="+myTopic+"&api_key=Q161ghCBqKJHbruJ3Q1Fw5KwccIY1VaJ&limit=10");
         gif.done(function(res) { 
             var myIDnum = myID.charAt(5);
             var myRating = $("<div>");
